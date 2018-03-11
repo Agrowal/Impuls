@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "connection.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QSqlQueryModel *modelDok;
+    QSqlQueryModel *modelPoz;
+
+    QString sQuery;
+
+    Connection* con = Connection::getConnection();
 };
 
 #endif // MAINWINDOW_H
