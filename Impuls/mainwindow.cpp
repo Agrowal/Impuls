@@ -25,14 +25,36 @@ MainWindow::MainWindow(QWidget *parent) :
                           and d.NUMER_KONTRAHENTA=k.NUMER_KONTRAHENTA
             )";
 
+
+
     modelDok->setQuery(queryLiteral);
     ui->tableView->setModel(modelDok);
 
     this->modelPoz = new QSqlQueryModel();
+    ui->tableView_2->setModel(modelPoz);
+
+
+    QObject::connect(ui->tableView, SIGNAL(clicked(QModelIndex)),
+                     this,SLOT(on_clicked()));
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_clicked(){
+
+    int rowNum = ui->tableView->currentIndex().row();
+    int colNum = 0;
+    QModelIndex index = ui->tableView->model()->index(rowNum, colNum, QModelIndex());
+    int dokID = ui->tableView->model()->data(index).toInt();
+
+    QSqlQuery qry;
+    qry.prepare("select * from pozycje_dokumentow pd where pd.ID_DOK = :dok");
+    qry.bindValue(":dok",dokID);
+    qry.exec();
+    modelPoz->setQuery(qry);
+    ui->tableView_2->setModel(modelPoz);
 }

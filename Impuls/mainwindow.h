@@ -16,6 +16,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void on_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlQueryModel *modelDok;
@@ -24,6 +27,7 @@ private:
     QString sQuery;
 
     Connection* con = Connection::getConnection();
+
 };
 
 #endif // MAINWINDOW_H
