@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "connection.h"
+#include "ui_mainwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,9 @@ private:
     QSqlQueryModel *modelPoz;
 
     QString sQuery;
+
+    void resizeColumns(QTableView* table);
+    void resizeEvent(QResizeEvent *evt);
 
     Connection* con = Connection::getConnection();
 
