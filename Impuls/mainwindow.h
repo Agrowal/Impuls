@@ -30,6 +30,8 @@ private:
     void resizeColumns(QTableView* table);
     void resizeEvent(QResizeEvent *evt);
 
+    QSqlQuery getPozycjeDokumentu(int id_dok, int id_firmy);
+
     Connection* con = Connection::getConnection();
 
 };
