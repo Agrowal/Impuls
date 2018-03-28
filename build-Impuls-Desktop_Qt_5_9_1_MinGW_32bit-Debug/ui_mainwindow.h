@@ -72,6 +72,8 @@ public:
 
         tableView = new QTableView(verticalLayoutWidget_2);
         tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setAlternatingRowColors(true);
+        tableView->verticalHeader()->setVisible(false);
 
         verticalLayout->addWidget(tableView);
 
@@ -90,6 +92,9 @@ public:
 
         tableView_2 = new QTableView(verticalLayoutWidget);
         tableView_2->setObjectName(QStringLiteral("tableView_2"));
+        tableView_2->setAlternatingRowColors(true);
+        tableView_2->setSortingEnabled(true);
+        tableView_2->verticalHeader()->setVisible(false);
 
         verticalLayout_2->addWidget(tableView_2);
 

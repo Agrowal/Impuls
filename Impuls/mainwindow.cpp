@@ -47,12 +47,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_clicked(){
-
-    int rowNum = ui->tableView->currentIndex().row();
-    int colNum = 0;
-    QModelIndex index = ui->tableView->model()->index(rowNum, colNum, QModelIndex());
-    volatile int dokID = ui->tableView->model()->data(index).toInt();
-
+    volatile int dokID = selectedDokID();
     modelPoz->setQuery(*pozycjeDokumentow.select(dokID));
     ui->tableView_2->setModel(modelPoz);
 }
@@ -64,17 +59,16 @@ void MainWindow::resizeColumns(QTableView* table ){
     }
 }
 
-void MainWindow::resizeEvent(QResizeEvent *evt)
-{
+void MainWindow::resizeEvent(QResizeEvent *evt){
     resizeColumns(ui->tableView);
     QMainWindow::resizeEvent(evt); //call base implementation
 }
 
-QSqlQuery MainWindow::getPozycjeDokumentu(int id_dok, int id_firma){
-//    QSqlQuery qry;
-//    qry.prepare(queryLiteralDokPoz);
-//    qry.bindValue(":id_dok",id_dok);
-//    qry.bindValue(":ID_FIRMY",id_firma);
-//    qry.exec();
-//    return qry;
+int MainWindow::selectedDokID(){
+    int rowNum = ui->tableView->currentIndex().row();
+    int colNum = 0;
+    QModelIndex index = ui->tableView->model()->index(rowNum, colNum, QModelIndex());
+
+    return ui->tableView->model()->data(index).toInt();
 }
+
