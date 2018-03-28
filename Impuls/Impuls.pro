@@ -26,11 +26,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    connection.cpp
+    connection.cpp \
+    query.cpp \
+    criteria.cpp \
+    pozycjedokumentowgateway.cpp
 
 HEADERS += \
         mainwindow.h \
-    connection.h
+    connection.h \
+    query.h \
+    criteria.h \
+    pozycjedokumentowgateway.h
 
 FORMS += \
         mainwindow.ui

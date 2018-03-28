@@ -11,6 +11,7 @@ public:
     // Static access method
     static Connection* getConnection();
 
+
 private:
     // Private constructor
     Connection();

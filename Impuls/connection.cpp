@@ -5,11 +5,9 @@ Connection* Connection::instance = 0;
 
 Connection* Connection::getConnection()
 {
-    if (instance == 0)
-    {
+    if (instance == 0){
         instance = new Connection();
     }
-
     return instance;
 }
 
